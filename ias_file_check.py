@@ -445,7 +445,7 @@ if __name__ == '__main__':
     bundle_dir = getattr(sys, '_MEIPASS', os.path.abspath(
         os.path.dirname(__file__)))
     app.setWindowIcon(QtGui.QIcon(os.path.join(bundle_dir, 'regulation.ico')))
-    app.setApplicationVersion("1.0.1")
+    app.setApplicationVersion("1.0.1b")
 
     ex = MyApp(gui_stream_handler)
     ex.update_label(app.applicationVersion())
