@@ -39,7 +39,7 @@ known_columns = ["ALB", "APAR", "CH4", "CO2", "CO2C13", "D_SNOW", "DBH", "EVI", 
                  "SW_DIF", "SW_IN", "SW_OUT", "SWC", "T_BOLE", "T_CANOPY", "T_DP", "T_SONIC", "T_SONIC_SIGMA", "TA",
                  "TAU", "TAU_SSITC_TEST", "TCARI", "THROUGHFALL", "TS", "U_SIGMA", "USTAR", "V_SIGMA", "VPD_PI",
                  "W_SIGMA", "WD", "WD_SIGMA", "WS", "WS_MAX", "WTD", "ZL", "CO2_STR", "H20_STR", "CH4_RSSI",
-                 "FCH4_SSITC_TEST"]
+                 "FCH4_SSITC_TEST", "H2O_STR"]
 
 
 def get_freq(df, time):
@@ -294,6 +294,12 @@ def check_file(path_to_file):
         if na_test:
             col_errors = col_errors + 1
             logging.error(_("The column {} is empty.").format(col))
+            continue
+
+        all_std_na = data[col].eq(-9999).all()
+        if all_std_na:
+            col_errors = col_errors + 1
+            logging.error(_("The column {} has only -9999 values.").format(col))
             continue
 
         inf_vals = data.loc[np.logical_or(data[col] == np.inf, data[col] == -np.inf)].index.to_numpy()

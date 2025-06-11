@@ -114,3 +114,7 @@ msgstr "{} ошибок суммарно, проверьте логи!"
 #: ias_file_check.py:281
 msgid "Check linked vars for {}, missing cols: {}"
 msgstr "Проверьте связанные колонки для переменной {}, пропущены: {}"
+
+#: ias_file_check.py:302
+msgid "The column {} has only -9999 values."
+msgstr "Колонка {} содержит только -9999."
